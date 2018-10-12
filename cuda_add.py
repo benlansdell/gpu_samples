@@ -40,9 +40,9 @@ cuda.Context.synchronize()
 result_cpu = x + y
 result_gpu = y_gpu.get()
 
-print 'x+y:       ', y[N-1]+x[N-1]
+print('x+y:       ', (y[N-1]+x[N-1]))
 #Retrieve result from GPU. returns a numpy array
-print 'func(x,y): ', y_gpu.get()[N-1]
+print('func(x,y): ', y_gpu.get()[N-1])
 x_colors=x_gpu.get()
 
-print 'max error', np.max(result_cpu - result_gpu)
+print('max error', np.max(result_cpu - result_gpu))

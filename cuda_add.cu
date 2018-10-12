@@ -5,12 +5,16 @@
 
 #include <iostream>
 #include <math.h>
+#include <stdio.h>
+// Kernel function to add the elements of two arrays
 
 __global__
 void add(int n, float *x, float *y)
 {
   int stride = blockDim.x;
+  //int stride = blockDim.x*gridDim.x;
   int index = threadIdx.x;
+  //int index = threadIdx.x + blockDim.x*blockIdx.x;
   printf("Hello from block %d, thread %d\n", blockIdx.x, threadIdx.x);
   for (int i = index; i < n; i += stride)
       y[i] = x[i] + y[i];
@@ -53,5 +57,3 @@ int main(void)
   return 0;
 }
 
-//int stride = blockDim.x*gridDim.x;
-//int index = threadIdx.x + blockDim.x*blockIdx.x;
